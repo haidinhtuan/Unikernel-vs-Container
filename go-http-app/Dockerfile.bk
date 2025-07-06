@@ -1,0 +1,31 @@
+# --- Build Stage ---
+# Use the official Go image as the builder. 'alpine' is a small Linux distro.
+FROM golang:1.22-alpine AS builder
+
+# Set the working directory
+WORKDIR /app
+
+# Copy the module files first. This leverages Docker's layer caching.
+# If these files don't change, Docker won't re-download dependencies.
+COPY go.mod go.sum* ./ 
+
+# Download dependencies (if any)
+# RUN go mod download
+
+# Copy the rest of the source code
+COPY main.go .
+
+# Build the Go application into a static binary. This is key.
+# CGO_ENABLED=0 disables C bindings, creating a pure Go binary.
+# GOOS=linux ensures it's built for a Linux environment.
+RUN CGO_ENABLED=0 GOOS=linux go build -v -o /app/main .
+
+# --- Final Stage ---
+# Use a 'scratch' image, which is completely empty. The ultimate minimal base.
+FROM scratch
+
+# Copy ONLY the compiled binary from the 'builder' stage.
+COPY --from=builder /app/main /main
+
+# Set the command to run our binary when the container starts.
+CMD ["/main"]
