@@ -150,13 +150,16 @@ wrk -t4 -c100 -d30s -s post.lua http://localhost:8080/compute
 If you use this work, please cite:
 
 ```bibtex
-@inproceedings{dinhtuan2025unikernels,
-  title={Unikernels vs. Containers: A Runtime-Level Performance Comparison for Resource-Constrained Edge Workloads},
+@INPROCEEDINGS{11410140,
   author={Dinh-Tuan, Hai},
-  booktitle={IEEE International Conference},
+  booktitle={2025 8th Conference on Cloud and Internet of Things (CIoT)},
+  title={Unikernels vs. Containers: A Runtime-Level Performance Comparison for Resource-Constrained Edge Workloads},
   year={2025},
-  doi={10.1109/11410140}
-}
+  volume={},
+  number={},
+  pages={1-8},
+  keywords={Performance evaluation;Runtime;Biological system modeling;Linux;Memory management;Ecosystems;Containers;Stability analysis;Kernel;Edge computing;unikernel;containers;edge computing;compute continuum},
+  doi={10.1109/CIoT67574.2025.11410140}}
 ```
 
 ## License
