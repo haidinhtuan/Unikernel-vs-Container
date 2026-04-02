@@ -164,4 +164,4 @@ If you use this work, please cite:
 
 ## License
 
-This project is provided for research and educational purposes. Please refer to the [published paper](https://ieeexplore.ieee.org/document/11410140) for detailed methodology and analysis.
+This project is licensed under the Apache License 2.0. See [LICENSE](LICENSE) for details.
